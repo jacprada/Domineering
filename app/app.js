@@ -18,6 +18,26 @@
 // 	- bloccare tutte le celle
 // 	- annunciare vincitore
 
+
+// Player one moves
+//  - check for win 
+// Player two moves 
+//  - check for win 
+
+// player 1 - n plus width 
+// player 2 - n plus 1 
+
+// if the remaining squares do not have n plus width, player two wins 
+// if the remaining squares do not have n plus 1, player 1 wins 
+
+// All moves - [0,1,2,3,4,5]
+// when you move, remove numbers from array
+
+// 0,3 
+
+// [1,2,4,5]
+
+
 $(function(){
 	Dom.setUp();
 })
@@ -27,13 +47,11 @@ var Dom = {};
 Dom.setUp = function() {
 	this.display = $(".display");
 	this.cells = $(".grid");
+	this.width = $(".1");
 	var $clear = $(".clear");
 
 	this.counter = 0;
-	this.fullGrid = [	[1,2,3], [1,2,3] ];
-
-	// this.firstRow = jQuery("#attached_docs[value='123']");
-	// this.firstColumn = jQuery("#attached_docs[value='123']");
+	this.fullGrid = [ 1,2,3,4,5,6 ];
 
 	this.cells.attr("disabled", false);
 	this.cells.css("background-color", "white");
@@ -46,48 +64,41 @@ Dom.getInput = function() {
 	if (Dom.counter % 2 == 0) {
 		var playerXInput = $(this).val();
 		var playerXIndex = $(this).index();
+		var playerXXIndex = Dom.cells.eq((playerXIndex + 1));
 
 		$(this).css("background-color", "yellow");
-		Dom.cells.eq((playerXIndex + 3)).css("background-color", "yellow");
+		playerXXIndex.css("background-color", "yellow");
 
 		$(this).attr("disabled", true);
-		Dom.cells.eq((playerXIndex + 3)).attr("disabled", true);
+		playerXXIndex.attr("disabled", true);
+
+		console.log(playerXXIndex);
 
 		Dom.counter += 1;
 		Dom.testWinX(playerXInput);
 	} else if (Dom.counter % 2 != 0) {
 		var playerOInput = $(this).val();
 		var playerOIndex = $(this).index();
+		var arrayLength = Dom.width.length;
+		var playerOOIndex = Dom.cells.eq((playerOIndex + arrayLength));
 
 		$(this).css("background-color", "red");
-		Dom.cells.eq((playerOIndex + 1)).css("background-color", "red");
+		playerOOIndex.css("background-color", "red");
 
 		$(this).attr("disabled", true);
-		Dom.cells.eq((playerOIndex + 1)).attr("disabled", true);
+		playerOOIndex.attr("disabled", true);
 
-		console.log("getinput2");
 		Dom.counter += 1;
-		console.log(Dom.counter);
 		Dom.testWinO(playerOInput);
 	}
 }
 
 Dom.testWinX = function(playerXInput) {
-
-	// for (var x = 0; x < ticTacToe.playerXCombos.length; x++) {
-	// 	for (var y = 0; y < ticTacToe.playerXCombos[x].length; y++) {
-	// 		if (ticTacToe.playerXCombos[x][y] === playerXInput) {
-	// 			var playerXCell = ticTacToe.playerXCombos[x][y];
-	// 			var indexPlayerXCell = ticTacToe.playerXCombos[x].indexOf(playerXCell);
-	// 			ticTacToe.playerXCombos[x].splice(indexPlayerXCell, 1);
-	// 			if (ticTacToe.playerXCombos[x].length === 0) {
-	// 				winner = "player X";
-	// 				ticTacToe.gameOver(winner);
-	console.log(playerXInput);
+	
 }
 
 Dom.testWinO = function(playerOInput) {
-	console.log(playerOInput);
+	// console.log(playerOInput);
 }
 
 
