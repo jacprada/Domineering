@@ -45,62 +45,109 @@ $(function(){
 var Dom = {};
 
 Dom.setUp = function() {
-	this.display = $(".display");
-	this.cells = $(".grid");
-	this.width = $(".1");
-	var $clear = $(".clear");
-
+	$('body').append("<ul id='display'></ul>");
+	this.display = $('#display');
+	this.numberOfSquares = 12;
+	this.width = 4;
+	this.display.css("width", this.width * 100 + "px")
 	this.counter = 0;
-	this.fullGrid = [ 1,2,3,4,5,6 ];
+	
+	// var $clear = $(".clear");
 
-	this.cells.attr("disabled", false);
+	for (var i = 0; i < this.numberOfSquares; i++) {
+		this.display.append('<li></li>');
+	}
+
+	this.cells = $('li');
+
+	this.fullGrid = (function(){
+		var array = [];
+		for (var i = 0; i < Dom.numberOfSquares; i++) {
+			array.push(i);
+		}
+		return array;
+	})();
+
+	$('input[type=button]').attr("disabled", false);
 	this.cells.css("background-color", "white");
 	this.cells.on("click", this.getInput);
-	$clear.on("click", this.setUp);
+	// $clear.on("click", this.setUp);
 	console.log("setup");
+}
+
+Dom.canMove = function(square) {
+	if (Dom.fullGrid[square] === undefined || Dom.fullGrid[square] === null) {
+		return false;
+	} else {
+		return true;
+	}
 }
 
 Dom.getInput = function() {
 	if (Dom.counter % 2 == 0) {
-		var playerXInput = $(this).val();
-		var playerXIndex = $(this).index();
-		var playerXXIndex = Dom.cells.eq((playerXIndex + 1));
+		var playerXIndex = Dom.cells.index(this);
+		var playerXXIndex = playerXIndex + 1;
 
-		$(this).css("background-color", "yellow");
-		playerXXIndex.css("background-color", "yellow");
+		if (Math.floor(playerXIndex/Dom.width) !== Math.floor(playerXXIndex/Dom.width)) {
+			console.log("Nope....");
 
-		$(this).attr("disabled", true);
-		playerXXIndex.attr("disabled", true);
+		} else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
+			$(this).css("background-color", "yellow");
+			$(Dom.cells[playerXXIndex]).css("background-color", "yellow");
+			
+			Dom.fullGrid[playerXXIndex] = null;
+			Dom.fullGrid[playerXIndex] = null;
+			Dom.counter += 1;
+			
+			if (Dom.testWin(Dom.width)) {
+				console.log("X Wins");
+			} else {
+				console.log("Continue...");
+			}
+			
+		} else {
+			console.log("Nope....")
+		}
 
-		console.log(playerXXIndex);
-
-		Dom.counter += 1;
-		Dom.testWinX(playerXInput);
 	} else if (Dom.counter % 2 != 0) {
-		var playerOInput = $(this).val();
-		var playerOIndex = $(this).index();
-		var arrayLength = Dom.width.length;
-		var playerOOIndex = Dom.cells.eq((playerOIndex + arrayLength));
+		var playerOIndex = Dom.cells.index(this);
+		var playerOOIndex = playerOIndex + Dom.width;
 
-		$(this).css("background-color", "red");
-		playerOOIndex.css("background-color", "red");
+		if (Dom.canMove(playerOIndex) && Dom.canMove(playerOOIndex)) {
+			$(this).css("background-color", "red");
+			$(Dom.cells[playerOOIndex]).css("background-color", "red");
 
-		$(this).attr("disabled", true);
-		playerOOIndex.attr("disabled", true);
+			Dom.fullGrid[playerOOIndex] = null;
+			Dom.fullGrid[playerOIndex] = null;
+			
+			Dom.counter += 1;
+			
+			if (Dom.testWin(1)) {
+				console.log("O Wins");
+			} else {
+				console.log("Continue");
+			};
 
-		Dom.counter += 1;
-		Dom.testWinO(playerOInput);
+		} else {
+			console.log("Nope....")
+		}
 	}
+	console.log(Dom.fullGrid);
 }
 
-Dom.testWinX = function(playerXInput) {
-	
+Dom.testWin = function(value) {
+	var i = 0,
+			len = Dom.fullGrid.length,
+			win = true;
+	for (i; i < len; i++) {
+		if (Dom.canMove(i) && 
+				Dom.canMove(i + value)) {
+			win = false;
+			break;
+		}
+	}
+	return win;
 }
-
-Dom.testWinO = function(playerOInput) {
-	// console.log(playerOInput);
-}
-
 
 
 

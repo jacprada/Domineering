@@ -1,0 +1,11 @@
+ul {
+}
+
+li {
+	display: block;
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+	float: left;
+	box-sizing: border-box;
+}
