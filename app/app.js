@@ -47,8 +47,8 @@ var Dom = {};
 Dom.setUp = function() {
 	$('body').append("<ul id='display'></ul>");
 	this.display = $('#display');
-	this.numberOfSquares = 12;
-	this.width = 4;
+	this.numberOfSquares = 16;
+	this.width = Math.round(Math.sqrt(this.numberOfSquares));
 	this.display.css("width", this.width * 100 + "px")
 	this.counter = 0;
 	
