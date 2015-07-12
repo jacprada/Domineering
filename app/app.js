@@ -18,26 +18,6 @@
 // 	- bloccare tutte le celle
 // 	- annunciare vincitore
 
-
-// Player one moves
-//  - check for win 
-// Player two moves 
-//  - check for win 
-
-// player 1 - n plus width 
-// player 2 - n plus 1 
-
-// if the remaining squares do not have n plus width, player two wins 
-// if the remaining squares do not have n plus 1, player 1 wins 
-
-// All moves - [0,1,2,3,4,5]
-// when you move, remove numbers from array
-
-// 0,3 
-
-// [1,2,4,5]
-
-
 $(function(){
 	Dom.setUp();
 })
@@ -45,20 +25,18 @@ $(function(){
 var Dom = {};
 
 Dom.setUp = function() {
-	$('body').append("<ul id='display'></ul>");
-	this.display = $('#display');
-	this.numberOfSquares = 16;
-	this.width = Math.round(Math.sqrt(this.numberOfSquares));
-	this.display.css("width", this.width * 100 + "px")
-	this.counter = 0;
-	
-	// var $clear = $(".clear");
+	$('body').append("<ul id='grid'></ul>"); //creazione ul chiamato grid dentro il body
+	this.grid = $("#grid");
+	var squares = prompt("Select the number of squares in the grid");//giocatore seleziona numero di quadrati per partita
+	this.numberOfSquares = parseInt(squares);
+	this.width = Math.round(Math.sqrt(this.numberOfSquares)); //calcolo di lunghezza ottimale per numero di quadrati specificati
+	this.grid.css("width", this.width * 100 + "px"); //definizione grafica griglia
+	this.counter = 0; //counter per conteggio giocata
 
 	for (var i = 0; i < this.numberOfSquares; i++) {
-		this.display.append('<li></li>');
+		this.grid.append("<li></li>"); //creazione li interni al ul chiamato grid
 	}
-
-	this.cells = $('li');
+	this.cells = $("li"); //creazione array di tutti i li contenuti in grid
 
 	this.fullGrid = (function(){
 		var array = [];
@@ -66,13 +44,11 @@ Dom.setUp = function() {
 			array.push(i);
 		}
 		return array;
-	})();
+	})(); //Self-Invoking Anonymous Function che genera una array lunga quanto il numero di quadrati nella grid
 
-	$('input[type=button]').attr("disabled", false);
+	$("input[type=button]").attr("disabled", false);
 	this.cells.css("background-color", "white");
-	this.cells.on("click", this.getInput);
-	// $clear.on("click", this.setUp);
-	console.log("setup");
+	this.cells.on("click", this.getInput);//ad ogni cella clicckata su attiva la funzione di gioco
 }
 
 Dom.canMove = function(square) {
@@ -85,21 +61,21 @@ Dom.canMove = function(square) {
 
 Dom.getInput = function() {
 	if (Dom.counter % 2 == 0) {
-		var playerXIndex = Dom.cells.index(this);
-		var playerXXIndex = playerXIndex + 1;
+		var playerXIndex = Dom.cells.index(this);//assegna a variable index value della cella cliccata
+		var playerXXIndex = playerXIndex + 1;//assegna a variable index value della della cella successiva (giocata orizzontale)
 
 		if (Math.floor(playerXIndex/Dom.width) !== Math.floor(playerXXIndex/Dom.width)) {
-			console.log("Nope....");
+			console.log("Nope...."); //non consente di giocare su linee diverse
 
-		} else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
-			$(this).css("background-color", "yellow");
+		} else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {//controlla se cella è già occupata/non esistente: funzione canMove restituisce true in caso di giocabilità
+			$(this).css("background-color", "yellow");//colora celle
 			$(Dom.cells[playerXXIndex]).css("background-color", "yellow");
 			
-			Dom.fullGrid[playerXXIndex] = null;
+			Dom.fullGrid[playerXXIndex] = null;//rende celle inutilizzabili definendone il contenuto "null"
 			Dom.fullGrid[playerXIndex] = null;
-			Dom.counter += 1;
+			Dom.counter += 1;//aumenta il contatore
 			
-			if (Dom.testWin(Dom.width)) {
+			if (Dom.testWin(Dom.width)) {//testa winning conditions (rispetto all'altro giocatore): se si realizzano, partita finsice e giocatore vince
 				console.log("X Wins");
 			} else {
 				console.log("Continue...");
@@ -110,19 +86,19 @@ Dom.getInput = function() {
 		}
 
 	} else if (Dom.counter % 2 != 0) {
-		var playerOIndex = Dom.cells.index(this);
-		var playerOOIndex = playerOIndex + Dom.width;
+		var playerOIndex = Dom.cells.index(this);//assegna a variable index value della cella cliccata
+		var playerOOIndex = playerOIndex + Dom.width;//assegna a variable index value della della cella successiva (giocata orizzontale)
 
-		if (Dom.canMove(playerOIndex) && Dom.canMove(playerOOIndex)) {
+		if (Dom.canMove(playerOIndex) && Dom.canMove(playerOOIndex)) {//controlla se cella è già occupata/non esistente: funzione canMove restituisce true in caso di giocabilità
 			$(this).css("background-color", "red");
 			$(Dom.cells[playerOOIndex]).css("background-color", "red");
 
-			Dom.fullGrid[playerOOIndex] = null;
+			Dom.fullGrid[playerOOIndex] = null;//rende celle inutilizzabili definendone il contenuto "null"
 			Dom.fullGrid[playerOIndex] = null;
 			
 			Dom.counter += 1;
 			
-			if (Dom.testWin(1)) {
+			if (Dom.testWin(1)) {//testa winning conditions (rispetto all'altro giocatore): se si realizzano, partita finsice e giocatore vince
 				console.log("O Wins");
 			} else {
 				console.log("Continue");
@@ -132,24 +108,18 @@ Dom.getInput = function() {
 			console.log("Nope....")
 		}
 	}
-	console.log(Dom.fullGrid);
 }
 
-Dom.testWin = function(value) {
+Dom.testWin = function(value) {//funzione relativa a winning conditions
 	var i = 0,
 			len = Dom.fullGrid.length,
 			win = true;
-	for (i; i < len; i++) {
-		if (Dom.canMove(i) && 
-				Dom.canMove(i + value)) {
+	for (i; i < len; i++) {//testa se giocatore è ancora in grado di muoversi sulla plancia: esistono celle disponibili?
+		if (Dom.canMove(i) && //esiste cella numero uno?
+				Dom.canMove(i + value)) {//esiste cella numero due (+1 in caso orizzontale, +wdith in caso di verticale?
 			win = false;
 			break;
 		}
 	}
 	return win;
 }
-
-
-
-
-
