@@ -81,17 +81,20 @@ Dom.singlePlayer = function() {
 
 			for (var i = 0; i < Dom.fullGrid.length; i++) {
 				if (Dom.canMove(i) && Dom.canMove(i + Dom.width)) {
-					if (Math.floor(Dom.fullGrid[i + 1]/Dom.width) !== Math.floor(Dom.fullGrid[i + 2]/Dom.width)) {
+					if (Math.floor(Dom.fullGrid[i + 1]/Dom.width) !== NaN && Math.floor(Dom.fullGrid[i + 1]/Dom.width) !== Math.floor(Dom.fullGrid[i + 2]/Dom.width)) {
 						var playerOIndex = i;
 						var playerOOIndex = playerOIndex + Dom.width;
+						console.log(1)
 						break;
-					} else if (Math.floor(Dom.fullGrid[i + 1 + Dom.width]/Dom.width) !== Math.floor(Dom.fullGrid[i + 2 + Dom.width]/Dom.width)) {
+					} else if (Math.floor(Dom.fullGrid[i + 1]/Dom.width) !== Math.floor(Dom.fullGrid[i + 2]/Dom.width)) {
 						var playerOIndex = i;
 						var playerOOIndex = playerOIndex + Dom.width;
+						console.log(2)
 						break;
-					} else if (Dom.canMove(i + 1) && !(Dom.canMove(i + 2))) {
+					} else if (Dom.canMove(i + Dom.width) && (Dom.canMove(i + 1 + Dom.width)) && !(Dom.canMove(i + 2 + Dom.width))) {
 						var playerOIndex = i;
 						var playerOOIndex = playerOIndex + Dom.width;
+						console.log(3)
 						break;
 					} else {
 						var playerOIndex = i;
