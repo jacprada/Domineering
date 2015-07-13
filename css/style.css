@@ -1,3 +1,29 @@
+#header {
+	max-width: 960px;
+	height: auto;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+#display {
+	background-color: green;
+	display: block;
+	margin: 0 auto;
+	width: 300px;
+	height: 30px;
+}
+
+#main {
+	max-width: 960px;
+	height: auto;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+ul {
+	margin: 10px;
+}
+
 li {
 	display: block;
 	width: 100px;
