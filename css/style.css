@@ -8,18 +8,32 @@
 #display {
 	background-color: green;
 	display: block;
-	margin: 0 auto;
 	width: 300px;
 	height: 30px;
 }
 
 #clear {
 	background-color: red;
-	display: block;
-	margin: 0 auto;
-	width: 300px;
+	display: inline-block;
+	width: 100px;
 	height: 30px;
 }
+
+#sp {
+	background-color: yellow;
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+}
+
+#mp {
+	background-color: brown;
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+}
+
+
 
 ul {
 	margin: 10px;
