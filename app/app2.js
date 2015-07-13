@@ -50,9 +50,6 @@ Dom.setUp = function() {
 //function that gets the input from each player, depending on the turn
 
 Dom.getInput = function() {
-	//determines the game turn based on the counter
-	if (Dom.counter % 2 === 0) {
-
 		//save cell selected by the player together with extra cell (+1 for horizontal move)
 		var playerXIndex = Dom.cells.index(this);
 		var playerXXIndex = playerXIndex + 1;
@@ -60,7 +57,6 @@ Dom.getInput = function() {
 		//make sure player selects cells on same line (horizontal move only)
 		if (Math.floor(playerXIndex/Dom.width) !== Math.floor(playerXXIndex/Dom.width)) {
 			Dom.display.val("You can't!");
-			console.log("Nope....");
 		} 
 
 		//determine if player can actually select the chosen cells (if they exist and are not already selected)
@@ -76,46 +72,45 @@ Dom.getInput = function() {
 			//test winning conditions for the other player: if he is unable to select cells, game is over 
 			if (Dom.testWin(Dom.width)) {
 				Dom.display.val("X wins");
-				console.log("X Wins");
 			} else {
 				Dom.display.val("go on!");
-				console.log("Continue...");
 			}
 		} else {
 			Dom.display.val("you can't!");
-			console.log("Nope....");
 		}
 
-		//determines the game turn based on the counter
-	} else if (Dom.counter % 2 !== 0) {
 
-		//save cell selected by the player together with extra cell (+width for vertical move)
-		var playerOIndex = Dom.cells.index(this);
-		var playerOOIndex = playerOIndex + Dom.width;
+		for (var i = 0; i < Dom.fullGrid.length; i++) {
+			if (Dom.canMove(i) && Dom.canMove(i + Dom.width)) {
+				if (Math.floor(Dom.fullGrid[i + 1]/Dom.width) !== Math.floor(Dom.fullGrid[i + 2]/Dom.width)) {
+					var playerOIndex = i;
+					var playerOOIndex = playerOIndex + Dom.width;
+					break;
+				} else if (Math.floor(Dom.fullGrid[i + 1 + Dom.width]/Dom.width) !== Math.floor(Dom.fullGrid[i + 2 + Dom.width]/Dom.width)) {
+					var playerOIndex = i;
+					var playerOOIndex = playerOIndex + Dom.width;
+					break;
+				} else if (Dom.canMove(i + 1) && !(Dom.canMove(i + 2))) {
+					var playerOIndex = i;
+					var playerOOIndex = playerOIndex + Dom.width;
+					break;
+				} else {
+				var playerOIndex = i;
+				var playerOOIndex = playerOIndex + Dom.width;
+				}
+			}
+		}
 
-		//determine if player can actually select the chosen cells (if they exist and are not already selected)
-		if (Dom.canMove(playerOIndex) && Dom.canMove(playerOOIndex)) {
-
-			//mark selected cells, assign value null in the comparison array and increase value of counter
-			$(this).css("background-color", "red");
+			$(Dom.cells[playerOIndex]).css("background-color", "red");
 			$(Dom.cells[playerOOIndex]).css("background-color", "red");
 			Dom.fullGrid[playerOOIndex] = null;
 			Dom.fullGrid[playerOIndex] = null;
-			Dom.counter += 1;
 			
-			//test winning conditions for the other player: if he is unable to select cells, game is over
 			if (Dom.testWin(1)) {
 				Dom.display.val("O wins!");
-				console.log("O Wins");
 			} else {
 				Dom.display.val("go on!");
-				console.log("Continue");
 			}
-		} else {
-			Dom.display.val("you can't!");
-			console.log("Nope....");
-		}
-	}
 };
 
 
