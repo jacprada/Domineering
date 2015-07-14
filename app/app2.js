@@ -26,12 +26,13 @@ Dom.setUp = function(size) {
 	$("#board").append("<ul id='grid'></ul>");
 	this.grid = $("#grid");
 	this.grid.css("width", this.width * 70 + "px");
+	this.grid.addClass("animated bounceInUp");
 	for (var i = 0; i < this.numberOfSquares; i++) {
-		this.grid.append("<li></li>"); 
+		this.grid.append("<li></li>");
 	}
 	this.cells = $("li");
-	// this.cells.css("background-color", "#111111");
 	
+
 	this.cells.on("click", function() {
 		if (Dom.modality === "single") {
 			Dom.singlePlayer.call(this);
@@ -44,27 +45,28 @@ Dom.setUp = function(size) {
 	  function () {
 
 	  	if (Dom.modality === "single") {
-		    $(this).addClass('hover');
+		    $(this).addClass("hoverOne");
 		    if (Math.floor(Dom.cells.index($(this))/Dom.width) === 
 		    		Math.floor(Dom.cells.index($(this).next())/Dom.width)) { 
-		    	$(this).next().addClass('hover');
+		    	$(this).next().addClass("hoverOne");
 		    }
 		  } else if (Dom.modality === "multi") {
 
 		  	if (Dom.counter % 2 === 0) {
-		  		$(this).addClass('hover');
+		  		$(this).addClass("hoverOne");
 			    if (Math.floor(Dom.cells.index($(this))/Dom.width) === 
 			    		Math.floor(Dom.cells.index($(this).next())/Dom.width)) { 
-			    	$(this).next().addClass('hover');
+			    	$(this).next().addClass("hoverOne");
 			    }
 		  	} else {
-		  		$(this).addClass('hover');
-			    $(Dom.cells[Dom.cells.index(this)+Dom.width]).addClass('hover');
+		  		$(this).addClass("hoverTwo");
+			    $(Dom.cells[Dom.cells.index(this)+Dom.width]).addClass("hoverTwo");
 		  	}
 		  }
 	  }, 
 	  function () {
-	  	Dom.cells.removeClass('hover');
+	  	Dom.cells.removeClass("hoverOne");
+	  	Dom.cells.removeClass("hoverTwo");
 	  }
 	);
 
@@ -125,8 +127,8 @@ Dom.singlePlayer = function() {
 
 	else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
 
-		$(this).css("background-color", "#111111");
-		$(Dom.cells[playerXXIndex]).css("background-color", "#111111");
+		$(this).css("background-color", "#353636");
+		$(Dom.cells[playerXXIndex]).css("background-color", "#353636");
 		Dom.fullGrid[playerXXIndex] = null;
 		Dom.fullGrid[playerXIndex] = null;
 
@@ -155,9 +157,8 @@ Dom.singlePlayer = function() {
 				}
 			};
 
-			setTimeout(function(){ $(Dom.cells[playerOIndex]).css("background-color", "red"); }, 3000);
-			// $(Dom.cells[playerOIndex]).css("background-color", "red");
-			$(Dom.cells[playerOOIndex]).css("background-color", "red");
+			setTimeout(function(){ $(Dom.cells[playerOIndex]).css("background-color", "#FFFFF0"); }, 300);
+			setTimeout(function(){ $(Dom.cells[playerOOIndex]).css("background-color", "#FFFFF0"); }, 300);
 			Dom.fullGrid[playerOOIndex] = null;
 			Dom.fullGrid[playerOIndex] = null;
 
@@ -215,8 +216,8 @@ Dom.multiPlayer = function() {
 
 		if (Dom.canMove(playerOIndex) && Dom.canMove(playerOOIndex)) {
 
-			$(this).css("background-color", "red");
-			$(Dom.cells[playerOOIndex]).css("background-color", "red");
+			$(this).css("background-color", "#FFFFF0");
+			$(Dom.cells[playerOOIndex]).css("background-color", "#FFFFF0");
 			Dom.fullGrid[playerOOIndex] = null;
 			Dom.fullGrid[playerOIndex] = null;
 			Dom.counter += 1;

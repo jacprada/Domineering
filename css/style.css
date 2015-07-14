@@ -197,6 +197,10 @@ li {
 	box-sizing: border-box;
 }
 
-.hover {
-	background-color: rgba(0,0,0,0.75);
+.hoverOne {
+	background-color: rgba(17,17,17, 0.8);
+}
+
+.hoverTwo {
+	background-color: rgba(221,221,221,0.8);
 }
