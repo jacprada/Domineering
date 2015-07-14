@@ -13,7 +13,6 @@ $(function(){
 var Dom = {};
 
 Dom.setUp = function(size) {
-	history.pushState({}, '', document.domain);
 
 	this.numberOfSquares = size*size;
 	this.width = Math.round(Math.sqrt(this.numberOfSquares));
