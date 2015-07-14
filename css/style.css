@@ -58,27 +58,35 @@ time, mark, audio, video {
 }
 
 #size {
+	background-color: rgba(17,17,17,1);
+	width: 100px;
+	height: 25px;
 	display: block;
-	margin: 1% auto;
+	margin: 0.5% auto 1.5% auto;
+	border-radius: 3px;
+	border: 1px solid #DDDDDD;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #DDDDDD;
+	font-size: 20px;
+	line-height: 22px;
+	font-weight: 300;
+}
+
+#play {
+	background-color: #DDDDDD;
+	width: 70px;
+	height: 28px;
+	display: block;
+	margin: 0 auto;
 	border-radius: 5px;
 	border: none;
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #111111;
 	font-size: 20px;
-	font-weight: 300;
-}
-
-#play {
-	display: block;
-	margin: 5% auto;
-	border-radius: 30px;
-	border: none;
-	text-align: center;
-	font-family: 'Source Sans Pro', sans-serif;
-	color: #111111;
-	font-size: 20px;
-	font-weight: 300;
+	line-height: 22px;
+	font-weight: 400;
 }
 
 #second {
@@ -91,20 +99,6 @@ time, mark, audio, video {
 	border: none;
 }
 
-/*#display {
-	display: block;
-	margin: 1% auto;
-	border-radius: 5px;
-	border: none;
-	text-align: center;
-	font-family: 'Source Sans Pro', sans-serif;
-	color: #111111;
-	font-size: 20px;
-	font-weight: 300;
-}
-*/
-
-
 #board {
 	margin: 0 auto;
 	border: none;
@@ -112,12 +106,12 @@ time, mark, audio, video {
 
 #display {
 	margin: 0 auto;
-	background-color: #111111;
+	background-color: rgba(17,17,17,1);
 	display: block;
 	width: 500px;
 	height: 30px;
-	border-radius: 5px;
-	border: none;
+	border-radius: 3px;
+	border: 1px solid #DDDDDD;
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #DDDDDD;
@@ -167,40 +161,31 @@ time, mark, audio, video {
 	font-size: 15px;
 }
 
-/*#credits {
-	display: block;
-	margin: 0 auto;
-	position: absolute;
-	bottom: 1px;
-	left: 50%;
-}
-*/
-
-
 ul {
 	margin: 10px auto;
 	padding: 1%;
 	height: inherit;
-	background-image: url("wood.png");
+	background-image: url("wood1.png");
 	box-shadow: 0px 10px 10px 5px rgba(0,0,0,0.75);
 	border-radius: 10px;
 }
 
 li {
 	background-color: none;
+	margin: 2px;
 	border-radius: 3px;
 	display: block;
 	width: 70px;
 	height: 70px;
-	border: 1px solid black;
+	border: 1px solid #111111;
 	float: left;
 	box-sizing: border-box;
 }
 
 .hoverOne {
-	background-color: rgba(26,26,26,0.9);
+	background-color: rgba(26,26,26,0.90);
 }
 
 .hoverTwo {
-	background-color: rgba(255,255,240,0.9);
+	background-color: rgba(255,255,240,0.8);
 }

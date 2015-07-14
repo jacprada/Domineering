@@ -21,11 +21,11 @@ Dom.setUp = function(size) {
 
 
 	this.board = $("#board");
-	this.board.css("height", this.height * 70 + "px");
+	this.board.css("height", this.height * 74 + "px");
 
 	$("#board").append("<ul id='grid'></ul>");
 	this.grid = $("#grid");
-	this.grid.css("width", this.width * 70 + "px");
+	this.grid.css("width", this.width * 74 + "px");
 	this.grid.addClass("animated bounceInUp");
 	for (var i = 0; i < this.numberOfSquares; i++) {
 		this.grid.append("<li></li>");
