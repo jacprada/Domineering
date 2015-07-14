@@ -1,14 +1,85 @@
-body {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 
 #first {
-	background: url("css/back.jpg");
+	background-image: url("back.png");
 	width: 100vw;
 	height: 100vh;
 	margin: 0 auto;
 	border: none;
 }
+
+#title {
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #DDDDDD;
+	font-size: 90px;
+	text-align: center;
+	padding-top: 15%;
+	font-weight: bold;
+}
+
+#intro {
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #DDDDDD;
+	font-size: 16px;
+	text-align: center;
+	padding: 1% 15%;
+}
+
+#selection {
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #DDDDDD;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 3%;
+}
+
+#size {
+	display: block;
+	margin: 1% auto;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #111111;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+#play {
+	display: block;
+	margin: 5% auto;
+	border-radius: 30px;
+	border: none;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #111111;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+
+
+
+
 
 #second {
 	width: 100vw;

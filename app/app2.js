@@ -1,20 +1,20 @@
 $(function(){
-	Dom.setUp();
+	$("#play").on("click", function() {
+		var size = parseInt($("#size").val());
+		$(document.body).animate({
+		    "scrollTop": $('#second').offset().top
+		}, 2000, function(){
+			Dom.setUp(size);
+		});
+	});
 });
 
 var Dom = {};
 
-Dom.setUp = function() {
+Dom.setUp = function(size) {
+	history.pushState({}, '', document.domain);
 
-	this.play = $("#play");
-	this.play.on("click", function() {
-		Dom.squares = parseInt($("#size").val());
-		$(document.body).animate({
-		    "scrollTop": $('#second').offset().top
-		}, 2000);
-	});
-
-	this.numberOfSquares = Dom.squares;
+	this.numberOfSquares = size;
 	this.width = Math.round(Math.sqrt(this.numberOfSquares));
 
 	$("#second").append("<ul id='grid'></ul>");
@@ -36,11 +36,12 @@ Dom.setUp = function() {
 
 	this.fullGrid = (function(){
 		var array = [];
-		for (var i = 0; i < this.numberOfSquares; i++) {
+		for (var i = 0; i < Dom.numberOfSquares; i++) {
 			array.push(i);
 		}
 		return array;
 	})();
+
 
 	this.display = $("#display");
 	this.counter = 0;
@@ -60,7 +61,9 @@ Dom.setUp = function() {
 
 	this.clear = $("#clear");
 	this.clear.on("click", function(){
-		location.reload();
+		$("#grid").remove();
+		history.pushState({}, '', document.domain);
+		Dom.setUp(size);
 	});
 };
 
