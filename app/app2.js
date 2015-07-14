@@ -15,12 +15,16 @@ var Dom = {};
 Dom.setUp = function(size) {
 	history.pushState({}, '', document.domain);
 
-	this.numberOfSquares = size;
+	this.numberOfSquares = size*size;
 	this.width = Math.round(Math.sqrt(this.numberOfSquares));
+	this.height = Math.ceil(Math.sqrt(this.numberOfSquares));
+
+
+	this.board = $("#board");
+	this.board.css("height", this.height * 70 + "px");
 
 	$("#board").append("<ul id='grid'></ul>");
 	this.grid = $("#grid");
-
 	this.grid.css("width", this.width * 70 + "px");
 	for (var i = 0; i < this.numberOfSquares; i++) {
 		this.grid.append("<li></li>"); 
@@ -51,17 +55,26 @@ Dom.setUp = function(size) {
 	this.single = $("#sp");
 	this.single.prop("disabled", false);
 	this.single.on("click", function(){
+		$(this).css("font-weight", "bold");
+		Dom.multi.css("font-weight", "normal");
 		Dom.modality = "single";
 	});
 
 	this.multi = $("#mp");
 	this.multi.prop("disabled", false);
 	this.multi.on("click", function(){
+		$(this).css("font-weight", "bold");
+		Dom.single.css("font-weight", "normal");
 		Dom.modality = "multi";
 	});
 
 	this.clear = $("#clear");
 	this.clear.on("click", function(){
+		Dom.single.css("font-weight", "normal");
+		Dom.multi.css("font-weight", "normal");
+		Dom.single.css("text-decoration", "none");
+		Dom.multi.css("text-decoration", "none");
+		Dom.display.val("Board cleared. Make your move!");
 		$("#grid").remove();
 		history.pushState({}, '', document.domain);
 		Dom.setUp(size);
@@ -69,6 +82,8 @@ Dom.setUp = function(size) {
 };
 
 Dom.singlePlayer = function() {
+	Dom.single.css("text-decoration", "line-through");
+	Dom.multi.css("text-decoration", "line-through");
 	Dom.single.prop("disabled", true);
 	Dom.multi.prop("disabled", true);
 
@@ -76,19 +91,21 @@ Dom.singlePlayer = function() {
 	var playerXXIndex = playerXIndex + 1;
 
 	if (Math.floor(playerXIndex/Dom.width) !== Math.floor(playerXXIndex/Dom.width)) {
-		console.log(playerXIndex);
 		Dom.display.val("You can't!");
 	}
 
 	else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
 
-		$(this).css("background-color", "#111111");
-		$(Dom.cells[playerXXIndex]).css("background-color", "#111111");
+		// $(this).css("background-color", "#111111");
+		$(this).animate({"background-color": "#111111"}, 1000);
+		$(Dom.cells[playerXXIndex]).animate({"background-color": "#111111"}, 1000);
+		// $(Dom.cells[playerXXIndex]).css("background-color", "#111111");
 		Dom.fullGrid[playerXXIndex] = null;
 		Dom.fullGrid[playerXIndex] = null;
 
 		if (Dom.testWin(Dom.width)) {
 			Dom.display.val("X wins");
+			Dom.cells.off("click");
 		} else {
 			Dom.display.val("go on!");
 
@@ -118,6 +135,7 @@ Dom.singlePlayer = function() {
 
 			if (Dom.testWin(1)) {
 				Dom.display.val("O wins!");
+				Dom.cells.off("click");
 			} else {
 				Dom.display.val("go on!");
 			}
@@ -128,6 +146,8 @@ Dom.singlePlayer = function() {
 };
 
 Dom.multiPlayer = function() {
+	Dom.single.css("text-decoration", "line-through");
+	Dom.multi.css("text-decoration", "line-through");
 	Dom.single.prop("disabled", true);
 	Dom.multi.prop("disabled", true);
 
@@ -138,7 +158,6 @@ Dom.multiPlayer = function() {
 
 		if (Math.floor(playerXIndex/Dom.width) !== Math.floor(playerXXIndex/Dom.width)) {
 			Dom.display.val("You can't!");
-			console.log("Nope....");
 		} 
 
 		else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
@@ -151,16 +170,14 @@ Dom.multiPlayer = function() {
 			
 			if (Dom.testWin(Dom.width)) {
 				Dom.display.val("X wins");
-				console.log("X Wins");
+				Dom.cells.off("click");
 			} else {
 				Dom.display.val("go on!");
-				console.log("Continue...");
 			}
 		}
 
 		else {
 			Dom.display.val("you can't!");
-			console.log("Nope....");
 		}
 
 	} else if (Dom.counter % 2 !== 0) {
@@ -178,16 +195,14 @@ Dom.multiPlayer = function() {
 			
 			if (Dom.testWin(1)) {
 				Dom.display.val("O wins!");
-				console.log("O Wins");
+				Dom.cells.off("click");
 			} else {
 				Dom.display.val("go on!");
-				console.log("Continue");
 			}
 		}
 
 		else {
 			Dom.display.val("you can't!");
-			console.log("Nope....");
 		}
 	}
 };

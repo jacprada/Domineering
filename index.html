@@ -7,19 +7,21 @@
 	<script type="text/javascript" src="app/app2.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body id="body">
 	<div id="first">
 		<h1 id="title">Domineering</h1>
 		<p id="intro">Domineering is a mathematical game introduced by Goran Andersson in 1974 and played on chequered boards of different sizes. It involves placing dominoes that cover two squares: one player places the dominoes in a horizontal orientation, while the other player places them in a vertical orientation. The first player who is unable to place a domino on the board has lost.</p>
-		<h3 id="selection">Select the number of squares:</h3>
-		<input type="text" id="size" value="64">
+		<h3 id="selection">Choose the width of the grid:</h3>
+		<input type="text" id="size" value="8">
 		<input type="button" id="play" value="play">
 	</div>
 	<div id="second">
-		<input type="text" id="display" value="welcome to the machine" readonly>
-		<input type="button" id="clear" value="clear">
-		<input type="button" id="sp" value="single-player">
-		<input type="button" id="mp" value="multi-player">
+		<input type="text" id="display" value="select game mode and click cell to start" readonly>
+		<div id="menu">
+			<input type="button" id="sp" value="single-player">
+			<input type="button" id="clear" value="clear board">
+			<input type="button" id="mp" value="multi-player">
+		</div>
 		<div id="board"></div>
 	</div>
 </body>

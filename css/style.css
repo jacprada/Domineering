@@ -19,7 +19,8 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-body {
+#body {
+	margin: 0;
 	background-image: url("back.png");
 }
 
@@ -81,11 +82,12 @@ body {
 }
 
 #second {
-	/*	background-image: url("wood.png");*/
 	background-color: rgba(221,221,221,0.90);
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
+	max-height: auto;
 	margin: 0 auto;
+	padding-top: 1%;
 	border: none;
 }
 
@@ -104,52 +106,84 @@ body {
 
 
 #board {
-	/*	background-color: pink;*/
-	height: inherit;
+	margin: 0 auto;
 	border: none;
 }
 
 #display {
 	margin: 0 auto;
-	background-color: green;
+	background-color: #111111;
 	display: block;
-	width: 300px;
+	width: 500px;
 	height: 30px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #DDDDDD;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+#menu {
+	margin: 5px auto;
+	text-align: center;
 }
 
 #clear {
-	margin: 0 auto;
-	background-color: red;
+	background-color: #DDDDDD;
 	display: inline-block;
-	width: 100px;
+	border-radius: 5px;
+	width: 160px;
 	height: 30px;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #111111;
+	font-size: 15px;
+	font-weight: 300;
 }
 
 #sp {
-	margin: 0 auto;
-	background-color: yellow;
+	background-color: #DDDDDD;
 	display: inline-block;
-	width: 100px;
+	border-radius: 5px;
+	width: 150px;
 	height: 30px;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #111111;
+	font-size: 15px;
 }
 
 #mp {
-	margin: 0 auto;
-	background-color: brown;
+	background-color: #DDDDDD;
 	display: inline-block;
-	width: 100px;
+	border-radius: 5px;
+	width: 150px;
 	height: 30px;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #111111;
+	font-size: 15px;
 }
 
+/*#credits {
+	display: block;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 1px;
+	left: 50%;
+}
+*/
 
 
 ul {
-	margin: 0 auto;
-	/*	margin: 10px;*/
-	padding: 10px;
-	/*height: 560px;*/
+	margin: 10px auto;
+	padding: 1%;
 	height: inherit;
 	background-image: url("wood.png");
+	box-shadow: 0px 10px 10px 5px rgba(0,0,0,0.75);
+	border-radius: 10px;
 }
 
 li {
