@@ -26,7 +26,7 @@ Dom.setUp = function(size) {
 		this.grid.append("<li></li>"); 
 	}
 	this.cells = $("li");
-	// this.cells.css("background-color", "yellow");
+	// this.cells.css("background-color", "#111111");
 	this.cells.on("click", function() {
 		if (Dom.modality === "single") {
 			Dom.singlePlayer.call(this);
@@ -82,8 +82,8 @@ Dom.singlePlayer = function() {
 
 	else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
 
-		$(this).css("background-color", "yellow");
-		$(Dom.cells[playerXXIndex]).css("background-color", "yellow");
+		$(this).css("background-color", "#111111");
+		$(Dom.cells[playerXXIndex]).css("background-color", "#111111");
 		Dom.fullGrid[playerXXIndex] = null;
 		Dom.fullGrid[playerXIndex] = null;
 
@@ -143,8 +143,8 @@ Dom.multiPlayer = function() {
 
 		else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
 
-			$(this).css("background-color", "yellow");
-			$(Dom.cells[playerXXIndex]).css("background-color", "yellow");
+			$(this).css("background-color", "#111111");
+			$(Dom.cells[playerXXIndex]).css("background-color", "#111111");
 			Dom.fullGrid[playerXXIndex] = null;
 			Dom.fullGrid[playerXIndex] = null;
 			Dom.counter += 1;
