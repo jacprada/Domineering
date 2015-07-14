@@ -196,3 +196,7 @@ li {
 	float: left;
 	box-sizing: border-box;
 }
+
+.hover {
+	background-color: rgba(0,0,0,0.75);
+}

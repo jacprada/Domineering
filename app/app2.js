@@ -31,6 +31,7 @@ Dom.setUp = function(size) {
 	}
 	this.cells = $("li");
 	// this.cells.css("background-color", "#111111");
+	
 	this.cells.on("click", function() {
 		if (Dom.modality === "single") {
 			Dom.singlePlayer.call(this);
@@ -38,6 +39,34 @@ Dom.setUp = function(size) {
 			Dom.multiPlayer.call(this);
 		}
 	});
+
+	this.cells.hover(
+	  function () {
+
+	  	if (Dom.modality === "single") {
+		    $(this).addClass('hover');
+		    if (Math.floor(Dom.cells.index($(this))/Dom.width) === 
+		    		Math.floor(Dom.cells.index($(this).next())/Dom.width)) { 
+		    	$(this).next().addClass('hover');
+		    }
+		  } else if (Dom.modality === "multi") {
+
+		  	if (Dom.counter % 2 === 0) {
+		  		$(this).addClass('hover');
+			    if (Math.floor(Dom.cells.index($(this))/Dom.width) === 
+			    		Math.floor(Dom.cells.index($(this).next())/Dom.width)) { 
+			    	$(this).next().addClass('hover');
+			    }
+		  	} else {
+		  		$(this).addClass('hover');
+			    $(Dom.cells[Dom.cells.index(this)+Dom.width]).addClass('hover');
+		  	}
+		  }
+	  }, 
+	  function () {
+	  	Dom.cells.removeClass('hover');
+	  }
+	);
 
 	this.fullGrid = (function(){
 		var array = [];
@@ -96,10 +125,8 @@ Dom.singlePlayer = function() {
 
 	else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
 
-		// $(this).css("background-color", "#111111");
-		$(this).animate({"background-color": "#111111"}, 1000);
-		$(Dom.cells[playerXXIndex]).animate({"background-color": "#111111"}, 1000);
-		// $(Dom.cells[playerXXIndex]).css("background-color", "#111111");
+		$(this).css("background-color", "#111111");
+		$(Dom.cells[playerXXIndex]).css("background-color", "#111111");
 		Dom.fullGrid[playerXXIndex] = null;
 		Dom.fullGrid[playerXIndex] = null;
 
@@ -128,7 +155,8 @@ Dom.singlePlayer = function() {
 				}
 			};
 
-			$(Dom.cells[playerOIndex]).css("background-color", "red");
+			setTimeout(function(){ $(Dom.cells[playerOIndex]).css("background-color", "red"); }, 3000);
+			// $(Dom.cells[playerOIndex]).css("background-color", "red");
 			$(Dom.cells[playerOOIndex]).css("background-color", "red");
 			Dom.fullGrid[playerOOIndex] = null;
 			Dom.fullGrid[playerOIndex] = null;
