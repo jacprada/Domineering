@@ -127,8 +127,8 @@ Dom.singlePlayer = function() {
 
 	else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
 
-		$(this).css("background-color", "#353636");
-		$(Dom.cells[playerXXIndex]).css("background-color", "#353636");
+		$(this).css("background-color", "#1A1A1A");
+		$(Dom.cells[playerXXIndex]).css("background-color", "#1A1A1A");
 		Dom.fullGrid[playerXXIndex] = null;
 		Dom.fullGrid[playerXIndex] = null;
 
@@ -191,8 +191,8 @@ Dom.multiPlayer = function() {
 
 		else if (Dom.canMove(playerXIndex) && Dom.canMove(playerXXIndex)) {
 
-			$(this).css("background-color", "#111111");
-			$(Dom.cells[playerXXIndex]).css("background-color", "#111111");
+			$(this).css("background-color", "#1A1A1A");
+			$(Dom.cells[playerXXIndex]).css("background-color", "#1A1A1A");
 			Dom.fullGrid[playerXXIndex] = null;
 			Dom.fullGrid[playerXIndex] = null;
 			Dom.counter += 1;
