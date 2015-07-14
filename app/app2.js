@@ -1,6 +1,7 @@
 $(function(){
 	$("#play").on("click", function() {
 		var size = parseInt($("#size").val());
+		$("#grid").remove();
 		$(document.body).animate({
 		    "scrollTop": $('#second').offset().top
 		}, 2000, function(){
@@ -17,15 +18,15 @@ Dom.setUp = function(size) {
 	this.numberOfSquares = size;
 	this.width = Math.round(Math.sqrt(this.numberOfSquares));
 
-	$("#second").append("<ul id='grid'></ul>");
+	$("#board").append("<ul id='grid'></ul>");
 	this.grid = $("#grid");
 
-	this.grid.css("width", this.width * 50 + "px");
+	this.grid.css("width", this.width * 70 + "px");
 	for (var i = 0; i < this.numberOfSquares; i++) {
 		this.grid.append("<li></li>"); 
 	}
 	this.cells = $("li");
-	this.cells.css("background-color", "white");
+	// this.cells.css("background-color", "yellow");
 	this.cells.on("click", function() {
 		if (Dom.modality === "single") {
 			Dom.singlePlayer.call(this);

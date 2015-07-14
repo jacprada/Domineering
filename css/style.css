@@ -19,8 +19,12 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-#first {
+body {
 	background-image: url("back.png");
+}
+
+#first {
+	background: rgba(17,17,17, 0.95);
 	width: 100vw;
 	height: 100vh;
 	margin: 0 auto;
@@ -76,15 +80,32 @@ time, mark, audio, video {
 	font-weight: 300;
 }
 
-
-
-
-
-
 #second {
+	background-color: rgba(221,221,221,0.90);
 	width: 100vw;
 	height: 100vh;
 	margin: 0 auto;
+	border: none;
+}
+
+/*#display {
+	display: block;
+	margin: 1% auto;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #111111;
+	font-size: 20px;
+	font-weight: 300;
+}
+*/
+
+
+#board {
+	background-color: pink;
+	width: auto;
+	height: auto;
 	border: none;
 }
 
@@ -119,13 +140,16 @@ time, mark, audio, video {
 
 
 ul {
-	margin: 10px;
+/*	margin: 10px;*/
+background-color: pink;
 }
 
 li {
+	background-color: none;
+	border-radius: 5px;
 	display: block;
-	width: 50px;
-	height: 50px;
+	width: 70px;
+	height: 70px;
 	border: 1px solid black;
 	float: left;
 	box-sizing: border-box;
