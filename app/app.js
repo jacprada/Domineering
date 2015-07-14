@@ -8,12 +8,14 @@ $(function(){
 			Dom.setUp(size);
 		});
 	});
-});
+});     
 
 var Dom = {};
 
 Dom.setUp = function(size) {
-	history.replaceState(null, null, document.domain);
+	$(window).on('beforeunload', function() {
+	    $(window).scrollTop(0);
+	});
 
 	this.numberOfSquares = size*size;
 	this.width = Math.round(Math.sqrt(this.numberOfSquares));
@@ -106,7 +108,6 @@ function () {
 		Dom.multi.css("text-decoration", "none");
 		Dom.display.val("Board cleared. Select game-mode.");
 		$("#grid").remove();
-		history.replaceState(null, null, document.domain);
 		Dom.setUp(size);
 	});
 };
