@@ -13,6 +13,7 @@ $(function(){
 var Dom = {};
 
 Dom.setUp = function(size) {
+	history.replaceState({}, '', document.domain);
 
 	this.numberOfSquares = size*size;
 	this.width = Math.round(Math.sqrt(this.numberOfSquares));
@@ -105,7 +106,7 @@ function () {
 		Dom.multi.css("text-decoration", "none");
 		Dom.display.val("Board cleared. Select game-mode.");
 		$("#grid").remove();
-		history.pushState({}, '', document.domain);
+		history.replaceState({}, '', document.domain);
 		Dom.setUp(size);
 	});
 };
