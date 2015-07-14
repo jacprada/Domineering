@@ -5,13 +5,22 @@ $(function(){
 var Dom = {};
 
 Dom.setUp = function() {
-	this.numberOfSquares = parseInt(prompt("Select the number of squares in the grid", "16"));
+
+	this.play = $("#play");
+	this.play.on("click", function() {
+		Dom.squares = parseInt($("#size").val());
+		$(document.body).animate({
+		    "scrollTop": $('#second').offset().top
+		}, 2000);
+	});
+
+	this.numberOfSquares = Dom.squares;
 	this.width = Math.round(Math.sqrt(this.numberOfSquares));
 
-	$("body").append("<ul id='grid'></ul>");
+	$("#second").append("<ul id='grid'></ul>");
 	this.grid = $("#grid");
 
-	this.grid.css("width", this.width * 100 + "px");
+	this.grid.css("width", this.width * 50 + "px");
 	for (var i = 0; i < this.numberOfSquares; i++) {
 		this.grid.append("<li></li>"); 
 	}
@@ -27,7 +36,7 @@ Dom.setUp = function() {
 
 	this.fullGrid = (function(){
 		var array = [];
-		for (var i = 0; i < Dom.numberOfSquares; i++) {
+		for (var i = 0; i < this.numberOfSquares; i++) {
 			array.push(i);
 		}
 		return array;

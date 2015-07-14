@@ -1,8 +1,20 @@
-#container {
-	max-width: 960px;
-	height: auto;
+body {
+	margin: 0;
+}
+
+#first {
+	background: url("css/back.jpg");
+	width: 100vw;
+	height: 100vh;
 	margin: 0 auto;
-	border: 1px solid black;
+	border: none;
+}
+
+#second {
+	width: 100vw;
+	height: 100vh;
+	margin: 0 auto;
+	border: none;
 }
 
 #display {
@@ -41,8 +53,8 @@ ul {
 
 li {
 	display: block;
-	width: 100px;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 	border: 1px solid black;
 	float: left;
 	box-sizing: border-box;
