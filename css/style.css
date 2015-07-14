@@ -95,7 +95,7 @@ time, mark, audio, video {
 	min-height: 100vh;
 	max-height: auto;
 	margin: 0 auto;
-	padding-top: 1%;
+	padding: 1% 0 1% 0;
 	border: none;
 }
 
@@ -120,7 +120,7 @@ time, mark, audio, video {
 }
 
 #menu {
-	margin: 5px auto;
+	margin: 0.5% auto 2% auto;
 	text-align: center;
 }
 
@@ -165,7 +165,7 @@ ul {
 	margin: 10px auto;
 	padding: 1%;
 	height: inherit;
-	background-image: url("wood1.png");
+	background-image: url("wood.png");
 	box-shadow: 0px 10px 10px 5px rgba(0,0,0,0.75);
 	border-radius: 10px;
 }
