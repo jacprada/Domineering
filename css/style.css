@@ -62,7 +62,7 @@ time, mark, audio, video {
 	width: 100px;
 	height: 25px;
 	display: block;
-	margin: 0.5% auto 1.5% auto;
+	margin: 0.5% auto 2% auto;
 	border-radius: 3px;
 	border: 1px solid #DDDDDD;
 	text-align: center;
@@ -108,19 +108,19 @@ time, mark, audio, video {
 	margin: 0 auto;
 	background-color: rgba(17,17,17,1);
 	display: block;
-	width: 500px;
-	height: 30px;
+	width: 550px;
+	height: 35px;
 	border-radius: 3px;
 	border: 1px solid #DDDDDD;
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #DDDDDD;
 	font-size: 20px;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 #menu {
-	margin: 0.5% auto 2% auto;
+	margin: 0.3% auto 1.8% auto;
 	text-align: center;
 }
 
@@ -128,37 +128,36 @@ time, mark, audio, video {
 	background-color: #DDDDDD;
 	display: inline-block;
 	border-radius: 5px;
-	width: 160px;
-	height: 30px;
+	width: 220px;
+	height: 35px;
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #111111;
-	font-size: 15px;
-	font-weight: 300;
+	font-size: 16px;
 }
 
 #sp {
 	background-color: #DDDDDD;
 	display: inline-block;
 	border-radius: 5px;
-	width: 150px;
-	height: 30px;
+	width: 160px;
+	height: 35px;
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #111111;
-	font-size: 15px;
+	font-size: 16px;
 }
 
 #mp {
 	background-color: #DDDDDD;
 	display: inline-block;
 	border-radius: 5px;
-	width: 150px;
-	height: 30px;
+	width: 160px;
+	height: 35px;
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #111111;
-	font-size: 15px;
+	font-size: 16px;
 }
 
 ul {
