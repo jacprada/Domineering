@@ -10,13 +10,11 @@ Play it here!
 //FOTO PRIMO DIV
 
 
-## Introduction: The Rules
+## Project Goals
 
-- Guess a letter by clicking on it
-- If the letter is in the word one or more times, it will appear in it's correct location within the word
-- If a guess is incorrect, the letter will be blacked out, and one part of the hangman will be drawn
-- If the word is correctly guessed before the hangman is completely drawn, you win!
-- If the hangman is completely drawn (after 9 incorrect guesses) it's Game Over!
+- Implement customizable grid
+- Implement single-player game mode and develop solid AI
+- Implement multi-player game mode based on turns
 
 //FOTO SECONDO DIV
 
