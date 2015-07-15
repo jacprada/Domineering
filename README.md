@@ -21,8 +21,8 @@ Play it here!
 
 ## Approach
 
-- Guess a letter by clicking on it
-- If the letter is in the word one or more times, it will appear in it's correct location within the word
+- OnLoad function allows the player to select the size of the grid
+- SetUp function creates the actual grid, the menu and the array
 - If a guess is incorrect, the letter will be blacked out, and one part of the hangman will be drawn
 - If the word is correctly guessed before the hangman is completely drawn, you win!
 - If the hangman is completely drawn (after 9 incorrect guesses) it's Game Over!
@@ -30,10 +30,9 @@ Play it here!
 
 ## Build It
 
-HTML 5, CSS and jQuery were used to create this game.
-Animation was created using the Animate.css stylesheet.
-Soundmanager was used to load the sounds.
-The Google Web Font 'Arvo' has been used to style the game.
+- HTML 5, CSS and jQuery were used to create this game.
+- Animation was created using the Animate.css stylesheet.
+- The Google Web Font 'Arvo' has been used to style the game.
 
 
 ## Problems & Challenges
