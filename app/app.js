@@ -41,6 +41,18 @@ Dom.setUp = function(size) {
 		}
 	});
 
+	this.fullGrid = (function(){
+		var array = [];
+		for (var i = 0; i < Dom.numberOfSquares; i++) {
+			array.push(i);
+		}
+		return array;
+	})();
+
+	this.display = $("#display");
+	this.counter = 0;
+	this.modality = "";
+
 	this.cells.hover(
 		function () {
 
@@ -69,18 +81,6 @@ function () {
 	Dom.cells.removeClass("hoverTwo");
 }
 );
-
-	this.fullGrid = (function(){
-		var array = [];
-		for (var i = 0; i < Dom.numberOfSquares; i++) {
-			array.push(i);
-		}
-		return array;
-	})();
-
-	this.display = $("#display");
-	this.counter = 0;
-	this.modality = "";
 	
 	this.single = $("#sp");
 	this.single.prop("disabled", false);
