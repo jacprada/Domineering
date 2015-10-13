@@ -7,16 +7,12 @@ Domineering is a mathematical game introduced by Goran Andersson in 1974 and pla
 
 Play it here!
 
-//FOTO PRIMO DIV
-
 
 ## Project Goals
 
 - Implement customizable grid.
 - Implement single-player game mode and develop solid AI.
 - Implement multi-player game mode based on turns.
-
-//FOTO SECONDO DIV FERMO
 
 
 ## The Approach
@@ -33,8 +29,6 @@ Play it here!
 - After each turn, test winning condition: loop through the comparison array to check if the opponent still has available moves.
 - Game ends when available moves for one of the players are over.
 
-//FOTO SECONDO DIV IN AZIONE
-
 
 ## The Code
 
@@ -50,4 +44,3 @@ Play it here!
 
 - Hover
 - CSS
-- Tua madre.
